@@ -60,6 +60,7 @@ body {
     width: 100%;
     text-align: center;
     padding: 12px;
+    cursor: pointer;
   }
   
   .terminal-tab.active {
