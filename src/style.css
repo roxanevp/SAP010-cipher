@@ -63,6 +63,10 @@ body {
     cursor: pointer;
   }
   
+  .terminal-tab p {
+    pointer-events: none;
+}
+
   .terminal-tab.active {
     background-color: var(--terminal-active-tab);
     color: var(--tab-text-active);
