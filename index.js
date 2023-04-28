@@ -20,7 +20,7 @@ function messageChange(event){
     result.innerHTML = value
 }
 
-/*TRANSFORMAR TABS EM BOTOES*/
+
 const tabCripto = document.querySelector("#tabCripto");
 const tabDecripto = document.querySelector("#tabDecripto");
 const toggletab = (event) => {
@@ -33,6 +33,7 @@ const toggletab = (event) => {
 
 tabCripto.onclick = toggletab
 tabDecripto.onclick = toggletab
+
 
 
 
