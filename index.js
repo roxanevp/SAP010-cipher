@@ -1,6 +1,6 @@
 import cipher from './cipher.js';
 
-console.log(cipher);
+let offSetValue = 3
 
 const closeButton = document.querySelector("#close");
 closeButton.onclick = function(){
@@ -12,12 +12,14 @@ closeButton.onclick = function(){
 const message = document.querySelector('#message');
 message.addEventListener('input', messageChange);
 
+
 function messageChange(event){
     console.log(event.target.value)
 
     const value = event.target.value
     const result = document.querySelector("#result")
-    result.innerHTML = value
+    const encrypted = cipher.encrypt(value, offSetValue); 
+    result.innerHTML = encrypted 
 }
 
 
@@ -31,9 +33,19 @@ const toggletab = (event) => {
     actualtab.classList.add("active")
 }
 
-tabCripto.onclick = toggletab
-tabDecripto.onclick = toggletab
+tabCripto.onclick = toggletab;
+tabDecripto.onclick = toggletab;
 
 
+const shiftNumber = document.querySelector("#shiftNumber");
 
 
+function updateOffSet(event) {
+    const value = event.target.value
+    offSetValue = Number(value)
+    
+    const messageValue = message.value
+    messageChange({ target: { value: messageValue } })
+}
+
+shiftNumber.onchange = updateOffSet 
