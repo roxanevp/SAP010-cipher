@@ -5,8 +5,8 @@ let activeTab = "tabCripto"
 
 const closeButton = document.querySelector("#close");
 closeButton.onclick = function(){
-    const frame = document.querySelector("#frame");
-    frame.classList.add("hide");
+  const frame = document.querySelector("#frame");
+  frame.classList.add("hide");
 }
 
 
@@ -16,37 +16,37 @@ message.addEventListener('input', messageChange);
 
 function messageChange(event){
 
-    const value = event.target.value
-    const result = document.querySelector("#result")
+  const value = event.target.value
+  const result = document.querySelector("#result")
 
-    if(activeTab === "tabCripto"){
-        const encrypted = cipher.encrypt(value, offSetValue); 
-        result.innerHTML = encrypted 
-    } else {
-        const decrypted = cipher.decrypt(value, offSetValue); 
-        result.innerHTML = decrypted
-    }
+  if(activeTab === "tabCripto"){
+    const encrypted = cipher.encode(offSetValue, value); 
+    result.innerHTML = encrypted 
+  } else {
+    const decrypted = cipher.decode(offSetValue, value); 
+    result.innerHTML = decrypted
+  }
 }
 
 
 const tabCripto = document.querySelector("#tabCripto");
 const tabDecripto = document.querySelector("#tabDecripto");
 const toggletab = (event) => {
-    tabCripto.classList.remove("active")
-    tabDecripto.classList.remove("active")
+  tabCripto.classList.remove("active")
+  tabDecripto.classList.remove("active")
 
-    const actualtab = event.target
-    actualtab.classList.add("active")
+  const actualtab = event.target
+  actualtab.classList.add("active")
 
-    const tabId = event.srcElement.id
-    if (activeTab !== tabId) {
-        activeTab = tabId
+  const tabId = event.srcElement.id
+  if (activeTab !== tabId) {
+    activeTab = tabId
 
-        const result = document.querySelector("#result").innerHTML.toString()
-        message.value = result
-        messageChange({ target: { value: result } })
+    const result = document.querySelector("#result").innerHTML.toString()
+    message.value = result
+    messageChange({ target: { value: result } })
 
-    } 
+  } 
 
 }
 
@@ -58,11 +58,11 @@ const shiftNumber = document.querySelector("#shiftNumber");
 
 
 function updateOffSet(event) {
-    const value = event.target.value
-    offSetValue = Number(value)
+  const value = event.target.value
+  offSetValue = Number(value)
     
-    const messageValue = message.value
-    messageChange({ target: { value: messageValue } })
+  const messageValue = message.value
+  messageChange({ target: { value: messageValue } })
 }
 
 shiftNumber.onchange = updateOffSet 
