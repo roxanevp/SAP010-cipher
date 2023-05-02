@@ -15,7 +15,6 @@ message.addEventListener('input', messageChange);
 
 
 function messageChange(event){
-    console.log(event.target.value)
 
     const value = event.target.value
     const result = document.querySelector("#result")
@@ -40,7 +39,15 @@ const toggletab = (event) => {
     actualtab.classList.add("active")
 
     const tabId = event.srcElement.id
-    activeTab = tabId
+    if (activeTab !== tabId) {
+        activeTab = tabId
+
+        const result = document.querySelector("#result").innerHTML.toString()
+        message.value = result
+        messageChange({ target: { value: result } })
+
+    } 
+
 }
 
 tabCripto.onclick = toggletab;
